@@ -260,11 +260,12 @@ public class Principal extends javax.swing.JFrame {
                 proyecto_seleccionado = (Proyecto) cb_actividades_proy.getSelectedItem();
                 
                 DefaultComboBoxModel modCB = new DefaultComboBoxModel();
-                modCB = (DefaultComboBoxModel)cb_actividad_act.getModel();
+                //modCB = (DefaultComboBoxModel)cb_actividad_act.getModel();
                 
                 for (int i = 0; i < proyecto_seleccionado.getListaActividades().size(); i++) {
                     modCB.addElement(proyecto_seleccionado.getListaActividades().get(i).getNombre());
                 }
+                cb_actividad_act.setModel(modCB);
                 
                 DefaultListModel l = (DefaultListModel)jl_temp.getModel();
                 l.addElement(proyecto_seleccionado.getNombre());
