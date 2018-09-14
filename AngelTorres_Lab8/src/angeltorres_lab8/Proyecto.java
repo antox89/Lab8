@@ -43,6 +43,27 @@ public class Proyecto {
     public void agregarActividad(Actividad a){
         this.listaActividades.add(a);
     }
+    
+    public void agregarPre(Predecesora p){
+        this.listaActividades.add(p);
+    }
+    
+    public void agregarPos(Sucesora s){
+        this.listaActividades.add(s);
+    }   
+    
+    public int posicion(String nombre){
+        int p = listaActividades.size();
+        int pos=-1;
+        for (int i = 0; i < p; i++) {
+            if(listaActividades.get(i).equals(nombre)){
+                pos = i;
+            }else{
+                pos=-99;
+            }
+        }
+        return pos;
+    }
 
     @Override
     public String toString() {

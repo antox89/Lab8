@@ -9,8 +9,8 @@ public class Actividad {
     
     private String nombre;
     private int duracion, inicio, finalTemprano, retraso;
-    private ArrayList<Actividad>preActividad = new ArrayList();
-    private ArrayList<Actividad>postActividad = new ArrayList();
+    private ArrayList<Predecesora>preActividad = new ArrayList();
+    private ArrayList<Sucesora>postActividad = new ArrayList();
 
     public Actividad() {
     }
@@ -63,19 +63,19 @@ public class Actividad {
         this.retraso = retraso;
     }
 
-    public ArrayList<Actividad> getPreActividad() {
+    public ArrayList<Predecesora> getPreActividad() {
         return preActividad;
     }
 
-    public void setPreActividad(ArrayList<Actividad> preActividad) {
+    public void setPreActividad(ArrayList<Predecesora> preActividad) {
         this.preActividad = preActividad;
     }
 
-    public ArrayList<Actividad> getPostActividad() {
+    public ArrayList<Sucesora> getPostActividad() {
         return postActividad;
     }
 
-    public void setPostActividad(ArrayList<Actividad> postActividad) {
+    public void setPostActividad(ArrayList<Sucesora> postActividad) {
         this.postActividad = postActividad;
     }
 

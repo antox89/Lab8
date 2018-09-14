@@ -1,4 +1,3 @@
-
 package angeltorres_lab8;
 
 import java.util.ArrayList;
@@ -13,17 +12,16 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends javax.swing.JFrame {
 
-    
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(this);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -45,6 +43,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tf_actividad_retraso = new javax.swing.JTextField();
         cb_actividad_act = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        rb_pre = new javax.swing.JRadioButton();
+        rb_post = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -114,8 +115,10 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel3.setText("Duración:");
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Proyecto");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Actividad");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Actividades");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Predecesoras");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sucesoras");
         treeNode1.add(treeNode2);
         jtree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(jtree);
@@ -132,6 +135,14 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setText("Retraso:");
 
+        jLabel5.setText("Tipo:");
+
+        buttonGroup1.add(rb_pre);
+        rb_pre.setText("Pre");
+
+        buttonGroup1.add(rb_post);
+        rb_post.setText("Post");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -141,14 +152,20 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tf_actividad_nombre)
-                    .addComponent(tf_actividad_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(tf_actividad_retraso, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_actividad_act, 0, 176, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tf_actividad_nombre)
+                        .addComponent(tf_actividad_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3)
+                        .addComponent(tf_actividad_retraso, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_actividad_act, 0, 176, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(rb_pre)
+                        .addGap(18, 18, 18)
+                        .addComponent(rb_post)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -176,12 +193,17 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(tf_actividad_retraso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(rb_pre)
+                                    .addComponent(rb_post))
+                                .addGap(32, 32, 32)
                                 .addComponent(jButton3)
-                                .addGap(49, 49, 49)
+                                .addGap(38, 38, 38)
                                 .addComponent(cb_actividad_act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -212,62 +234,58 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        
+
         String nombre;
-        
-        try{
-            nombre =tf_proyecto_nombre.getText();
-            Proyecto p = new Proyecto(nombre,0);
-            
-            
+
+        try {
+            nombre = tf_proyecto_nombre.getText();
+            Proyecto p = new Proyecto(nombre, 0);
+
             listaProyectos.add(p);
-            
-            DefaultComboBoxModel modeloCB_p= (DefaultComboBoxModel)cb_proyectos.getModel();
+
+            DefaultComboBoxModel modeloCB_p = (DefaultComboBoxModel) cb_proyectos.getModel();
             modeloCB_p.addElement(p);
-            DefaultComboBoxModel modeloCB_p2= (DefaultComboBoxModel)cb_actividades_proy.getModel();
+            DefaultComboBoxModel modeloCB_p2 = (DefaultComboBoxModel) cb_actividades_proy.getModel();
             modeloCB_p2.addElement(p);
-            
+
             JOptionPane.showMessageDialog(this, "Agregado con éxito");
             tf_proyecto_nombre.setText("");
-            
-        }catch(InputMismatchException e){
+
+        } catch (InputMismatchException e) {
             JOptionPane.showMessageDialog(this, "Ingrese un valor correcto!");
             tf_proyecto_nombre.setText("");
         }
-        
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void tabsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabsStateChanged
-        
-        if(tabs.getSelectedIndex()==0){
-            flag=1;
+
+        if (tabs.getSelectedIndex() == 0) {
+            flag = 1;
         }
-        if(tabs.getSelectedIndex()==1){
-            flag=2;
+        if (tabs.getSelectedIndex() == 1) {
+            flag = 2;
         }
-        
+
     }//GEN-LAST:event_tabsStateChanged
 
     private void cb_actividades_proyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_actividades_proyItemStateChanged
-        
-        
-        
-        if (flag ==2){
-            
-            
-            if(evt.getStateChange()==2){
-                
+
+        if (flag == 2) {
+
+            if (evt.getStateChange() == 2) {
+
                 proyecto_seleccionado = (Proyecto) cb_actividades_proy.getSelectedItem();
-                
+
                 DefaultComboBoxModel modCB = new DefaultComboBoxModel();
                 //modCB = (DefaultComboBoxModel)cb_actividad_act.getModel();
-                
+
                 for (int i = 0; i < proyecto_seleccionado.getListaActividades().size(); i++) {
                     modCB.addElement(proyecto_seleccionado.getListaActividades().get(i).getNombre());
                 }
                 cb_actividad_act.setModel(modCB);
-                
-                DefaultListModel l = (DefaultListModel)jl_temp.getModel();
+
+                DefaultListModel l = new DefaultListModel();
                 l.addElement(proyecto_seleccionado.getNombre());
                 jl_temp.setModel(l);
             }
@@ -277,29 +295,41 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         String nombre;
         int duracion, retraso;
-        try{
+        try {
             nombre = tf_actividad_nombre.getText();
             duracion = Integer.parseInt(tf_actividad_duracion.getText());
             retraso = Integer.parseInt(tf_actividad_retraso.getText());
-            
-            Actividad a = new Actividad(nombre, duracion, 0, duracion, retraso);
-            
-            proyecto_seleccionado = (Proyecto) cb_actividades_proy.getSelectedItem();
-            proyecto_seleccionado.agregarActividad(a);
-            
-            
-            JOptionPane.showMessageDialog(this, "Actividad agregada con éxito");
+
+            if (nombre.equals("") || duracion == 0 || retraso == 0) {
+
+            } else {
+
+                //Actividad a = new Actividad(nombre, duracion, 0, duracion, retraso);
+
+                proyecto_seleccionado = (Proyecto) cb_actividades_proy.getSelectedItem();
+                int pos = proyecto_seleccionado.posicion(nombre);
+                
+                if(rb_pre.isSelected()){
+                    proyecto_seleccionado.agregarPre(new Predecesora(nombre, duracion, 0, duracion, retraso));
+                }
+                if(rb_post.isSelected()){
+                    proyecto_seleccionado.agregarPos(new Sucesora(nombre, duracion, 0, duracion, retraso));
+                }
+                
+                
+
+                JOptionPane.showMessageDialog(this, "Actividad agregada con éxito");
+                tf_actividad_retraso.setText("");
+                tf_actividad_duracion.setText("");
+                tf_actividad_nombre.setText("");
+            }
+
+        } catch (InputMismatchException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese sólo enteros!");
             tf_actividad_retraso.setText("");
             tf_actividad_duracion.setText("");
-            tf_actividad_nombre.setText("");
-            
-        }catch(InputMismatchException e){
-            JOptionPane.showMessageDialog(this, "Ingrese un valor correcto!");
-            tf_actividad_retraso.setText("");
-            tf_actividad_duracion.setText("");
-        }
-        catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Ingrese un valor correcto!");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese sólo enteros!");
             tf_actividad_retraso.setText("");
             tf_actividad_duracion.setText("");
         }
@@ -341,6 +371,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb_actividad_act;
     private javax.swing.JComboBox<String> cb_actividades_proy;
     private javax.swing.JComboBox<String> cb_proyectos;
@@ -351,6 +382,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -360,6 +392,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> jl_temp;
     private javax.swing.JTree jtree;
+    private javax.swing.JRadioButton rb_post;
+    private javax.swing.JRadioButton rb_pre;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTextField tf_actividad_duracion;
     private javax.swing.JTextField tf_actividad_nombre;
@@ -367,7 +401,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_proyecto_nombre;
     // End of variables declaration//GEN-END:variables
 
-    int flag= 0;
+    int flag = 0;
     ArrayList<Proyecto> listaProyectos = new ArrayList();
     Proyecto proyecto_seleccionado;
 }
