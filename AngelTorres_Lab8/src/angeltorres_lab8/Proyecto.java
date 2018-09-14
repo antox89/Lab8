@@ -39,6 +39,10 @@ public class Proyecto {
     public void setListaActividades(ArrayList<Actividad> listaActividades) {
         this.listaActividades = listaActividades;
     }
+    
+    public void agregarActividad(Actividad a){
+        this.listaActividades.add(a);
+    }
 
     @Override
     public String toString() {
