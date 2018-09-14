@@ -16,6 +16,7 @@ public class Principal extends javax.swing.JFrame {
     
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     
@@ -31,7 +32,7 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_actividades_proy = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tf_actividad_nombre = new javax.swing.JTextField();
@@ -39,6 +40,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtree = new javax.swing.JTree();
         jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_temp = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        tf_actividad_retraso = new javax.swing.JTextField();
+        cb_actividad_act = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -98,6 +104,12 @@ public class Principal extends javax.swing.JFrame {
 
         tabs.addTab("Proyectos", jPanel1);
 
+        cb_actividades_proy.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_actividades_proyItemStateChanged(evt);
+            }
+        });
+
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Duración:");
@@ -109,6 +121,16 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtree);
 
         jButton3.setText("Agregar Actividad");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jl_temp.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(jl_temp);
+
+        jLabel4.setText("Retraso:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,19 +140,20 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(tf_actividad_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_actividad_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tf_actividad_nombre)
+                    .addComponent(tf_actividad_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3)
+                    .addComponent(tf_actividad_retraso, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_actividad_act, 0, 176, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(cb_actividades_proy, 0, 158, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
@@ -138,19 +161,29 @@ public class Principal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_actividades_proy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(tf_actividad_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(tf_actividad_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(tf_actividad_retraso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
-                        .addComponent(jButton3)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(49, 49, 49)
+                                .addComponent(cb_actividad_act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -191,6 +224,8 @@ public class Principal extends javax.swing.JFrame {
             
             DefaultComboBoxModel modeloCB_p= (DefaultComboBoxModel)cb_proyectos.getModel();
             modeloCB_p.addElement(p);
+            DefaultComboBoxModel modeloCB_p2= (DefaultComboBoxModel)cb_actividades_proy.getModel();
+            modeloCB_p2.addElement(p);
             
             JOptionPane.showMessageDialog(this, "Agregado con éxito");
             tf_proyecto_nombre.setText("");
@@ -212,6 +247,62 @@ public class Principal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_tabsStateChanged
+
+    private void cb_actividades_proyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_actividades_proyItemStateChanged
+        
+        
+        
+        if (flag ==2){
+            
+            
+            if(evt.getStateChange()==2){
+                
+                proyecto_seleccionado = (Proyecto) cb_actividades_proy.getSelectedItem();
+                
+                DefaultComboBoxModel modCB = new DefaultComboBoxModel();
+                modCB = (DefaultComboBoxModel)cb_actividad_act.getModel();
+                
+                for (int i = 0; i < proyecto_seleccionado.getListaActividades().size(); i++) {
+                    modCB.addElement(proyecto_seleccionado.getListaActividades().get(i).getNombre());
+                }
+                
+                DefaultListModel l = (DefaultListModel)jl_temp.getModel();
+                l.addElement(proyecto_seleccionado.getNombre());
+                jl_temp.setModel(l);
+            }
+        }
+    }//GEN-LAST:event_cb_actividades_proyItemStateChanged
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        String nombre;
+        int duracion, retraso;
+        try{
+            nombre = tf_actividad_nombre.getText();
+            duracion = Integer.parseInt(tf_actividad_duracion.getText());
+            retraso = Integer.parseInt(tf_actividad_retraso.getText());
+            
+            Actividad a = new Actividad(nombre, duracion, 0, duracion, retraso);
+            
+            proyecto_seleccionado = (Proyecto) cb_actividades_proy.getSelectedItem();
+            proyecto_seleccionado.agregarActividad(a);
+            
+            
+            JOptionPane.showMessageDialog(this, "Actividad agregada con éxito");
+            tf_actividad_retraso.setText("");
+            tf_actividad_duracion.setText("");
+            tf_actividad_nombre.setText("");
+            
+        }catch(InputMismatchException e){
+            JOptionPane.showMessageDialog(this, "Ingrese un valor correcto!");
+            tf_actividad_retraso.setText("");
+            tf_actividad_duracion.setText("");
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Ingrese un valor correcto!");
+            tf_actividad_retraso.setText("");
+            tf_actividad_duracion.setText("");
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -249,24 +340,29 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_actividad_act;
+    private javax.swing.JComboBox<String> cb_actividades_proy;
     private javax.swing.JComboBox<String> cb_proyectos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> jl_temp;
     private javax.swing.JTree jtree;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTextField tf_actividad_duracion;
     private javax.swing.JTextField tf_actividad_nombre;
+    private javax.swing.JTextField tf_actividad_retraso;
     private javax.swing.JTextField tf_proyecto_nombre;
     // End of variables declaration//GEN-END:variables
 
