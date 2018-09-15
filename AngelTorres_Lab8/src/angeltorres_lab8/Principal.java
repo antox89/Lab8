@@ -299,6 +299,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tabla);
 
         jButton4.setText("Ejecución Proyecto");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -573,6 +578,28 @@ public class Principal extends javax.swing.JFrame {
         listaProyectos.remove(p);
     }//GEN-LAST:event_bt_proyecto_delMouseClicked
 
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        
+        int pos = cb_exe_pro.getSelectedIndex();
+        int t = 0;
+        ArrayList<Actividad> actividades = new ArrayList<>();
+        for (int i = 0; i < listaProyectos.get(pos).getListaActividades().size(); i++) {
+
+            actividades.add(listaProyectos.get(pos).getListaActividades().get(i));
+            for (int j = 0; j < listaProyectos.get(pos).getListaActividades().get(i).getPreActividad().size(); j++) {
+                actividades.add(listaProyectos.get(pos).getListaActividades().get(i).getPreActividad().get(j));
+            }
+            for (int j = 0; j < listaProyectos.get(pos).getListaActividades().get(i).getPostActividad().size(); j++) {
+                actividades.add(listaProyectos.get(pos).getListaActividades().get(i).getPostActividad().get(j));
+            }
+        }
+        hilo = new HiloActividades();
+        hilo.setLista(actividades);
+        hilo.setTabla(tabla);
+        hilo.start();
+        
+    }//GEN-LAST:event_jButton4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -664,4 +691,5 @@ public class Principal extends javax.swing.JFrame {
     Actividad actividad_selected;
     Predecesora actividad_pre;
     Sucesora actividad_pos;
+    HiloActividades hilo;
 }
