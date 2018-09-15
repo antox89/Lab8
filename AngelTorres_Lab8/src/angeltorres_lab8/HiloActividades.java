@@ -64,7 +64,7 @@ public class HiloActividades extends Thread {
         for (Actividad a : lista) {
             
             Object[] row = {
-                a.getNombre(), a.getInicio(), a.getDuracion(), a.getFinalTemprano(), a.getRetraso()};
+                a.getNombre(), a.getDuracion(), a.getRetraso(), a.getInicio(), a.getFinalTemprano()};
             
             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
             modelo.addRow(row);

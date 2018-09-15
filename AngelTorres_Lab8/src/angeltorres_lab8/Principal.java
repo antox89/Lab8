@@ -33,10 +33,8 @@ public class Principal extends javax.swing.JFrame {
         cb_proyectos = new javax.swing.JComboBox<>();
         tf_proyecto_nombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        bt_proyecto_del = new javax.swing.JButton();
+        bt_proyecto_edit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cb_actividades_proy = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -56,6 +54,12 @@ public class Principal extends javax.swing.JFrame {
         rb_post = new javax.swing.JRadioButton();
         jButton3 = new javax.swing.JButton();
         rb_actual = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        cb_exe_pro = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -83,34 +87,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Eliminar");
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Tipo", "Duración", "Valor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        bt_proyecto_del.setText("Eliminar");
+        bt_proyecto_del.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_proyecto_delMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tabla);
 
-        jButton4.setText("Ejecución Proyecto");
+        bt_proyecto_edit.setText("Modificar");
+        bt_proyecto_edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_proyecto_editMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,38 +108,34 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton4)
-                        .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tf_proyecto_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jButton1))
-                            .addGap(304, 304, 304)
-                            .addComponent(jButton2)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_proyecto_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bt_proyecto_del)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_proyecto_edit)))
+                .addGap(153, 153, 153))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tf_proyecto_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(28, 28, 28))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(bt_proyecto_del)
+                    .addComponent(bt_proyecto_edit))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
 
         tabs.addTab("Proyectos", jPanel1);
@@ -194,7 +179,7 @@ public class Principal extends javax.swing.JFrame {
         buttonGroup1.add(rb_post);
         rb_post.setText("Post");
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Modificar Actividad");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -203,6 +188,8 @@ public class Principal extends javax.swing.JFrame {
 
         buttonGroup1.add(rb_actual);
         rb_actual.setText("Actual");
+
+        jButton2.setText("Eliminar Actividad");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -233,7 +220,9 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
                         .addGap(102, 102, 102)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -274,13 +263,71 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(bt_actividad_add)
                                 .addGap(38, 38, 38)
                                 .addComponent(cb_actividad_act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         tabs.addTab("Actividades", jPanel2);
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Duración", "Retraso", "Inicio", "Final"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabla);
+
+        jButton4.setText("Ejecución Proyecto");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cb_exe_pro, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(389, 389, 389))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(cb_exe_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+
+        tabs.addTab("Ejececutar Proyectos", jPanel3);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -382,22 +429,15 @@ public class Principal extends javax.swing.JFrame {
                 cb_actividad_act.setModel(modCB);
 
                 DefaultTreeModel m = (DefaultTreeModel) jtree.getModel();
-
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-
                 raiz.removeAllChildren();
 
-                /*
                 
-                
-                 */
                 for (int i = 0; i < 1; i++) {
-                    //DefaultMutableTreeNode proyectos = new DefaultMutableTreeNode(proyecto_seleccionado.getNombre());
                     DefaultMutableTreeNode ss = new DefaultMutableTreeNode("Sucesora");
                     DefaultMutableTreeNode pp = new DefaultMutableTreeNode("Predecesora");
 
                     for (int j = 0; j < proyecto_seleccionado.getListaActividades().size(); j++) {
-                        //DefaultMutableTreeNode n = new DefaultMutableTreeNode("Sucesora");
                         
                         for (Actividad ac : proyecto_seleccionado.getListaActividades()) {
                             if(ac instanceof Predecesora){
@@ -413,17 +453,7 @@ public class Principal extends javax.swing.JFrame {
                             
                             
                         }
-                        //DefaultMutableTreeNode pre = new DefaultMutableTreeNode("Predecesora");
-                        //n.add(sus);
-                        //n.add(pre);
                         
-                        /*
-                        
-                        */
-
-                        
-
-                        //proyectos.add(n);
                     }
                     raiz.add(ss);
                     raiz.add(pp);
@@ -453,6 +483,8 @@ public class Principal extends javax.swing.JFrame {
             modeloCB_p.addElement(p);
             DefaultComboBoxModel modeloCB_p2 = (DefaultComboBoxModel) cb_actividades_proy.getModel();
             modeloCB_p2.addElement(p);
+            DefaultComboBoxModel modeloCB_p3 = (DefaultComboBoxModel) cb_exe_pro.getModel();
+            modeloCB_p3.addElement(p);
 
             //JOptionPane.showMessageDialog(this, "Agregado con éxito");
             tf_proyecto_nombre.setText("");
@@ -489,23 +521,57 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jtreeMouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        DefaultComboBoxModel m2 = (DefaultComboBoxModel) cb_actividad_act.getModel();
-        Actividad act = ((Actividad) m2.getSelectedItem());
-
-        if (act.getPreActividad().isEmpty()) {
-            act.setInicio(1);
-            act.setFinalTemprano(act.getInicio() + act.getDuracion());
-        } else {
-            int m = -1;
-            for (int i = 0; i < act.getPreActividad().size(); i++) {
-                for (int j = 0; j < act.getPreActividad().size(); j++) {
-                    if (act.getPreActividad().get(i).getRetraso() > act.getPreActividad().get(j).getRetraso()) {
-                        m = act.getPreActividad().get(i).getRetraso();
-                    }
-                }
-            }
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_actividad_act.getModel();
+        
+        actividad_selected = ((Actividad) modelo.getSelectedItem());
+        
+        if(actividad_selected instanceof Sucesora){
+            modelo.removeElement(actividad_selected);
+            String s = JOptionPane.showInputDialog(this, "Nuevo nombre del Proyecto:");
+            actividad_selected.setNombre(s);
+            modelo.addElement(actividad_selected);
         }
+        if(actividad_selected instanceof Predecesora){
+            modelo.removeElement(actividad_selected);
+            String s = JOptionPane.showInputDialog(this, "Nuevo nombre del Proyecto:");
+            actividad_selected.setNombre(s);
+            modelo.addElement(actividad_selected);
+        }
+
+        
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void bt_proyecto_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_proyecto_editMouseClicked
+        //Modificar el proyecto
+        proyecto_seleccionado = (Proyecto) cb_proyectos.getSelectedItem();
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.removeElement(proyecto_seleccionado);
+        
+        String s = JOptionPane.showInputDialog(this, "Nuevo nombre del Proyecto:");
+        proyecto_seleccionado.setNombre(s);
+        modelo.addElement(proyecto_seleccionado);
+        
+        
+        
+    }//GEN-LAST:event_bt_proyecto_editMouseClicked
+
+    private void bt_proyecto_delMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_proyecto_delMouseClicked
+        proyecto_seleccionado = (Proyecto) cb_proyectos.getSelectedItem();
+        int p = cb_proyectos.getSelectedIndex();
+        
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel)cb_proyectos.getModel();
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel)cb_actividades_proy.getModel();
+        DefaultComboBoxModel modelo3 = (DefaultComboBoxModel)cb_exe_pro.getModel();
+        modelo.removeElement(proyecto_seleccionado);
+        modelo2.removeElement(proyecto_seleccionado);
+        modelo3.removeElement(proyecto_seleccionado);
+        
+        cb_proyectos.setModel(modelo);
+        cb_actividades_proy.setModel(modelo2);
+        cb_exe_pro.setModel(modelo3);
+        listaProyectos.remove(p);
+    }//GEN-LAST:event_bt_proyecto_delMouseClicked
 
     /**
      * @param args the command line arguments
@@ -544,9 +610,12 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_actividad_add;
+    private javax.swing.JButton bt_proyecto_del;
+    private javax.swing.JButton bt_proyecto_edit;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb_actividad_act;
     private javax.swing.JComboBox<String> cb_actividades_proy;
+    private javax.swing.JComboBox<String> cb_exe_pro;
     private javax.swing.JComboBox<String> cb_proyectos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -562,6 +631,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
