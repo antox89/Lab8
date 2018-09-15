@@ -389,42 +389,7 @@ public class Principal extends javax.swing.JFrame {
 
                 /*
                 
-                if (tipo.equals("Pre")) {
-                    for (int i = 0; i < raiz.getChildCount(); i++) {
-                        if (raiz.getChildAt(i).toString().equals("Pre")) {
-                            DefaultMutableTreeNode pre = new DefaultMutableTreeNode("Test Pre");
-                            ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(pre);
-                        }
-                    }
-                }
-
-                if (tipo.equals("Post")) {
-                    for (int i = 0; i < raiz.getChildCount(); i++) {
-                        if (raiz.getChildAt(i).toString().equals("Post")) {
-                            DefaultMutableTreeNode post = new DefaultMutableTreeNode("Test Post");
-                            ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(post);
-                        }
-                    }
-                }
-                m.reload();
                 
-                int ct = 0;
-
-                for (Actividad su : listaProyectos.get(ct).getListaActividades()) {
-
-                    if (su instanceof Sucesora) {
-                        for (int i = 0; i < raiz.getChildCount(); i++) {
-                            DefaultMutableTreeNode n
-                                    = new DefaultMutableTreeNode();
-                            ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(n);
-                            System.out.println("hola");
-                        }
-
-                    }
-
-                    m.reload();
-                    ct++;
-                }
                  */
                 for (int i = 0; i < 1; i++) {
                     //DefaultMutableTreeNode proyectos = new DefaultMutableTreeNode(proyecto_seleccionado.getNombre());
@@ -453,22 +418,7 @@ public class Principal extends javax.swing.JFrame {
                         //n.add(pre);
                         
                         /*
-                        for (int jj = 0; jj < raiz.getChildCount(); jj++) {
-                            if (raiz.getChildAt(jj).toString().equals("Sucesora")) {
-                                for (int k = 0; k < proyecto_seleccionado.getListaActividades().get(j).getPreActividad().size(); k++) {
-                                    //DefaultMutableTreeNode pre1 = new DefaultMutableTreeNode();
-                                    //pre1.add(new DefaultMutableTreeNode(proyecto_seleccionado.getListaActividades().get(k).getPreActividad().get(k)));
-                                    //pre.add(pre1);
-                                    //((DefaultMutableTreeNode) raiz.getChildAt(i)).add(new DefaultMutableTreeNode(proyecto_seleccionado.getListaActividades().get(k).getPreActividad().get(k)));
-                                    //ss.add(ll);
-                                }
-
-                                for (int kk = 0; kk < proyecto_seleccionado.getListaActividades().get(j).getPostActividad().size(); kk++) {
-                                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(new DefaultMutableTreeNode(proyecto_seleccionado.getListaActividades().get(kk).getPostActividad().get(kk)));
-
-                                }
-                            }
-                        }
+                        
                         */
 
                         
@@ -479,22 +429,7 @@ public class Principal extends javax.swing.JFrame {
                     raiz.add(pp);
                 }
 
-                /*
-                for (Actividad a : proyecto_seleccionado.getListaActividades()) {
-                    
-
-                    if (a instanceof Sucesora) {
-                        for (int i = 0; i < raiz.getChildCount(); i++) {
-                            if (raiz.getChildAt(i).toString().equals("Sucesora")) {
-                                DefaultMutableTreeNode p = new DefaultMutableTreeNode(a.getNombre());
-                                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
-                                centinela = 1;
-                                raiz.add(p);
-                            }
-                        }
-                    }
-
-                }*/
+                
                 m.reload();
 
                 DefaultListModel l = new DefaultListModel();
@@ -539,7 +474,7 @@ public class Principal extends javax.swing.JFrame {
             nodo_seleccionado = (DefaultMutableTreeNode) v1;
             System.out.println("siii");
 
-            if (nodo_seleccionado.getUserObject() instanceof Actividad) {
+            if (nodo_seleccionado.getUserObject() instanceof Predecesora) {
 
                 actividad_pre = (Predecesora) nodo_seleccionado.getUserObject();
                 ppm_tree.show(evt.getComponent(), evt.getX(), evt.getY());
